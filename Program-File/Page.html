@@ -1,0 +1,694 @@
+<style>
+.col4, .col5, .col6, .col7, .col8, .row4, .row5, .row6, .row7, .row8
+{
+ display: none;
+}
+table
+{
+ width: 95%;
+ margin: auto;
+}
+table, th, td
+{
+ border: 1px solid black;
+ border-collapse: collapse;
+}
+th
+{
+ text-align: center;
+}
+.col0, .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .VIC, .TS, .TR, .IND, .PLACE
+{
+ width: 5%;
+ text-align: center;
+}
+.idk1
+{
+ width: 10%;
+}
+.idk2
+{
+ width: 10%;
+}
+.matchNavBtnGrp
+{
+ width: 20%;
+}
+.matchNavCurNum
+{
+ width: 10%;
+ text-align: center;
+}
+#mainDiv
+{
+ width: 100%;
+}
+</style>
+<div id="mainDiv">
+<form id="frmNum"action="https://sites.google.com/site/musketeerfencingclub/home/pool-score-sheet-tool/system/app/pages/search">
+ <label id="comboBoxNum">Select the number of fencers in the pool: </label>
+ <select id="cmboNum">
+  <option>8</option>
+  <option>7</option>
+  <option>6</option>
+  <option>5</option>
+  <option>4</option>
+  <option>3</option>
+ </select>
+ <br><br>
+ <!-- Add Request Match Time Limit -->
+</form>
+<button id="numBtn" onclick="submitPoolSettings()">Next</button>
+
+<form style="display:none" id="frmFencers" action="https://sites.google.com/site/musketeerfencingclub/home/pool-score-sheet-tool/system/app/pages/search">
+ <label id="nameLab1">Name of Fencer 1: </label>
+ <input type="text" id="name1" name="name1"><br>
+ 
+ <label id="nameLab2">Name of Fencer 2: </label>
+ <input type="text" id="name2" name="name2"><br>
+ 
+ <label id="nameLab3">Name of Fencer 3: </label>
+ <input type="text" id="name3" name="name3"><br>
+ 
+ <div id="n4" style="display:none">
+ <label id="nameLab4">Name of Fencer 4: </label>
+ <input type="text" id="name4" name="name4"><br>
+ </div>
+ 
+ <div id="n5" style="display:none">
+ <label id="nameLab5">Name of Fencer 5: </label>
+ <input type="text" id="name5" name="name5"><br>
+ </div>
+ 
+ <div id="n6" style="display:none">
+ <label id="nameLab6">Name of Fencer 6: </label>
+ <input type="text" id="name6" name="name6"><br>
+ </div>
+ 
+ <div id="n7" style="display:none">
+ <label id="nameLab7">Name of Fencer 7: </label>
+ <input type="text" id="name7" name="name7"><br>
+ </div>
+ 
+ <div id="n8" style="display:none">
+ <label id="nameLab8">Name of Fencer 8: </label>
+ <input type="text" id="name8" name="name8"><br>
+ </div>
+ <br>
+ <br>
+</form>
+<button style="display:none" id="submit" onclick="submitNames()">Submit</button>
+
+<div style="display:none" id="MatchPoolInfo">
+ <table>
+  <tr class="rowHeader">
+   <th class="FencerNames">Fencer Names</th>
+   <th class="col0">#</th>
+   <th class="col1">1</th>
+   <th class="col2">2</th>
+   <th class="col3">3</th>
+   <th class="col4">4</th>
+   <th class="col5">5</th>
+   <th class="col6">6</th>
+   <th class="col7">7</th>
+   <th class="col8">8</th>
+   <th class="VIC">V</th>
+   <th class="TS">TS</th>
+   <th class="TR">TR</th>
+   <th class="IND">IND</th>
+   <th class="PLACE">PLACE</th>
+  </tr>
+  <tr class="row1">
+   <td id="nm1" class="FencerNames"></td>
+   <th class="numHeader">1</th>
+   <td id="c1r1" class="col1" style="background-color:Black"></td>
+   <td id="c2r1" class="col2">0</td>
+   <td id="c3r1" class="col3">0</td>
+   <td id="c4r1" class="col4">0</td>
+   <td id="c5r1" class="col5">0</td>
+   <td id="c6r1" class="col6">0</td>
+   <td id="c7r1" class="col7">0</td>
+   <td id="c8r1" class="col8">0</td>
+   <td id="1VIC" class="VIC">0</td>
+   <td id="1TS" class="TS">0</td>
+   <td id="1TR" class="TR">0</td>
+   <td id="1IND" class="IND">0</td>
+   <td id="1PLACE" class="PLACE"></td>
+  </tr>
+  <tr class="row2">
+   <td id="nm2" class="FencerNames"></td>
+   <th class="numHeader">2</th>
+   <td id="c1r2" class="col1">0</td>
+   <td id="c2r2" class="col2" style="background-color:Black"></td>
+   <td id="c3r2" class="col3">0</td>
+   <td id="c4r2" class="col4">0</td>
+   <td id="c5r2" class="col5">0</td>
+   <td id="c6r2" class="col6">0</td>
+   <td id="c7r2" class="col7">0</td>
+   <td id="c8r2" class="col8">0</td>
+   <td id="2VIC" class="VIC">0</td>
+   <td id="2TS" class="TS">0</td>
+   <td id="2TR" class="TR">0</td>
+   <td id="2IND" class="IND">0</td>
+   <td id="2PLACE" class="PLACE"></td>
+  </tr>
+  <tr class="row3">
+   <td id="nm3" class="FencerNames"></td>
+   <th class="numHeader">3</th>
+   <td id="c1r3" class="col1">0</td>
+   <td id="c2r3" class="col2">0</td>
+   <td id="c3r3" class="col3" style="background-color:Black"></td>
+   <td id="c4r3" class="col4">0</td>
+   <td id="c5r3" class="col5">0</td>
+   <td id="c6r3" class="col6">0</td>
+   <td id="c7r3" class="col7">0</td>
+   <td id="c8r3" class="col8">0</td>
+   <td id="3VIC" class="VIC">0</td>
+   <td id="3TS" class="TS">0</td>
+   <td id="3TR" class="TR">0</td>
+   <td id="3IND" class="IND">0</td>
+   <td id="3PLACE" class="PLACE"></td>
+  </tr>
+  <tr class="row4">
+   <td id="nm4" class="FencerNames"></td>
+   <th class="numHeader">4</th>
+   <td id="c1r4" class="col1">0</td>
+   <td id="c2r4" class="col2">0</td>
+   <td id="c3r4" class="col3">0</td>
+   <td id="c4r4" class="col4" style="background-color:Black"></td>
+   <td id="c5r4" class="col5">0</td>
+   <td id="c6r4" class="col6">0</td>
+   <td id="c7r4" class="col7">0</td>
+   <td id="c8r4" class="col8">0</td>
+   <td id="4VIC" class="VIC">0</td>
+   <td id="4TS" class="TS">0</td>
+   <td id="4TR" class="TR">0</td>
+   <td id="4IND" class="IND">0</td>
+   <td id="4PLACE" class="PLACE"></td>
+  </tr>
+  <tr class="row5">
+   <td id="nm5" class="FencerNames"></td>
+   <th class="numHeader">5</th>
+   <td id="c1r5" class="col1">0</td>
+   <td id="c2r5" class="col2">0</td>
+   <td id="c3r5" class="col3">0</td>
+   <td id="c4r5" class="col4">0</td>
+   <td id="c5r5" class="col5" style="background-color:Black"></td>
+   <td id="c6r5" class="col6">0</td>
+   <td id="c7r5" class="col7">0</td>
+   <td id="c8r5" class="col8">0</td>
+   <td id="5VIC" class="VIC">0</td>
+   <td id="5TS" class="TS">0</td>
+   <td id="5TR" class="TR">0</td>
+   <td id="5IND" class="IND">0</td>
+   <td id="5PLACE" class="PLACE"></td>
+  </tr>
+  <tr class="row6">
+   <td id="nm6" class="FencerNames"></td>
+   <th class="numHeader">6</th>
+   <td id="c1r6" class="col1">0</td>
+   <td id="c2r6" class="col2">0</td>
+   <td id="c3r6" class="col3">0</td>
+   <td id="c4r6" class="col4">0</td>
+   <td id="c5r6" class="col5">0</td>
+   <td id="c6r6" class="col6" style="background-color:Black"></td>
+   <td id="c7r6" class="col7">0</td>
+   <td id="c8r6" class="col8">0</td>
+   <td id="6VIC" class="VIC">0</td>
+   <td id="6TS" class="TS">0</td>
+   <td id="6TR" class="TR">0</td>
+   <td id="6IND" class="IND">0</td>
+   <td id="6PLACE" class="PLACE"></td>
+  </tr>
+  <tr class="row7">
+   <td id="nm7" class="FencerNames"></td>
+   <th class="numHeader">7</th>
+   <td id="c1r7" class="col1">0</td>
+   <td id="c2r7" class="col2">0</td>
+   <td id="c3r7" class="col3">0</td>
+   <td id="c4r7" class="col4">0</td>
+   <td id="c5r7" class="col5">0</td>
+   <td id="c6r7" class="col6">0</td>
+   <td id="c7r7" class="col7" style="background-color:Black"></td>
+   <td id="c8r7" class="col8">0</td>
+   <td id="7VIC" class="VIC">0</td>
+   <td id="7TS" class="TS">0</td>
+   <td id="7TR" class="TR">0</td>
+   <td id="7IND" class="IND">0</td>
+   <td id="7PLACE" class="PLACE"></td>
+  </tr>
+  <tr class="row8">
+   <td id="nm8" class="FencerNames"></td>
+   <th class="numHeader">8</th>
+   <td id="c1r8" class="col1">0</td>
+   <td id="c2r8" class="col2">0</td>
+   <td id="c3r8" class="col3">0</td>
+   <td id="c4r8" class="col4">0</td>
+   <td id="c5r8" class="col5">0</td>
+   <td id="c6r8" class="col6">0</td>
+   <td id="c7r8" class="col7">0</td>
+   <td id="c8r8" class="col8" style="background-color:Black"></td>
+   <td id="8VIC" class="VIC">0</td>
+   <td id="8TS" class="TS">0</td>
+   <td id="8TR" class="TR">0</td>
+   <td id="8IND" class="IND">0</td>
+   <td id="8PLACE" class="PLACE"></td>
+  </tr>
+ </table>
+ <br>
+ <br>
+ <h2>Match Scoring</h2>
+ <h3>Current Match</h3>
+ <p id="matchTimer"></p>
+ <table id="currentMatch" style="width: 60%">
+  <tr>
+   <th id="curMatchNum"></th>
+   <th>Left Fencer</th>
+   <th class="idk1">#</th>
+   <th>Right Fencer</th>
+   <th class="idk2">#</th>
+  </tr>
+  <tr>
+   <th>Name</th>
+   <td id="curFencerLName" style="text-align:center"></td>
+   <td id="curFencerLNum" class="idk1" style="text-align:center"></td>
+   <td id="curFencerRName" style="text-align:center"></td>
+   <td id="curFencerRNum" class="idk2" style="text-align:center"></td>
+  </tr>
+  <tr>
+   <th>Touches</th>
+   <td id="curFencerLScore" colspan="2" style="border-right:none;text-align:center"></td>
+   <td id="curFencerRScore" colspan="2" style="border-right:none;text-align:center"></td>
+  </tr>
+  <tr>
+   <th>Points</th>
+   <td colspan="2" style="text-align:center">
+    <button id="addPointL" onclick="addPointL()" style="margin: 5px;padding:10px">+</button>
+    <button id="subPointL" onclick="subPointL()" style="margin: 5px;padding:10px">-</button>
+   </td>
+   <td colspan="2" style="text-align:center">
+    <button id="addPointR" onclick="addPointR()" style="margin: 5px;padding:10px">+</button>
+    <button id="subPointR" onclick="subPointR()" style="margin: 5px;padding:10px">-</button>
+   </td>
+  </tr>
+  <tr style="display:none">
+   <th>Timer</th>
+   <td><!-- <button id="resetTimer" onclick="resetTimer()">Reset</button> --></td>
+   <td><!-- <button id="playTimer" onclick="playTimer()">&gt;</button> --></td>
+   <td><!-- <button id="stopTimer" onclick="stopTimer()">Halt</button> --></td>
+   <td class="idk2" style="text-align:right"><button id="nextMatch" onclick="nextMatch()">Next Match</button></td>
+  </tr>
+ </table>
+ <br>
+ <table id="matchNavTbl" style="width: 60%">
+  <tr id="matchNavTbl">
+   <th class="matchNavBtnGrp" rowspan="2">
+    <button id="matchNavPrev" class="matchNavBtn" onclick="navMatch('PREV')">Previous Match</button>
+   </th>
+   <th id="matchNavCurNumLab" class="matchNavCurNum">Current Match</th>
+   <th id="matchNavGTMNumInput" class="matchNavGTMNum" colspan="2">Go To Match #</th>
+   <th class="matchNavBtnGrp" rowspan="2">
+    <button id="matchNavNext" class="matchNavBtn" onclick="navMatch('NEXT')">Next Match</button>
+   </th>
+  </tr>
+  
+  <tr id="matchNavTbl">
+   <!-- Prev Match Btn -->
+   <td id="matchNavCurNumDis" class="matchNavCurNum">1</td>
+   <td id="matchNavGTMNumInput" class="matchNavGTMNum1">
+    <label id="matchNavGTMNumLab" class="matchNavGTMNumInput">Match #: </label>
+    <input id="matchNavGTMNumTxt" class="matchNavGTMNumInput" type="text" name="matchNavGTMNumTxt">
+   </td>
+   <td id="matchNavGTMNumAction" class="matchNavGTMNum2">
+    <button id="matchNavGTMNumBtn" class="matchNavGTMNumAction" onclick="goToMatch()">Go</button>
+   </td>
+   <!-- Next Match Btn -->
+  </tr>
+ </table>
+ 
+ <h3>Next Matches</h3>
+ <table id="NextMatches" style="width: 60%">
+  <tr>
+   <th style="width: 20%">On Deck</th>
+   <td id="next1FencerLName" style="text-align:center;width: 40%"></td>
+   <td id="next1FencerRName" style="text-align:center;width: 40%"></td>
+  </tr>
+  <tr>
+   <th style="width: 20%">In the Hole</th>
+   <td id="next2FencerLName" style="text-align:center;width: 40%"></td>
+   <td id="next2FencerRName" style="text-align:center;width: 40%"></td>
+  </tr>
+ </table>
+</div>
+</div>
+
+
+
+
+<script>
+
+
+
+
+
+
+//POOL SHEET PROGRAM SCRIPT
+
+//Init Global Vars
+
+// Global Scaler Vars
+var boutNum;
+var curMatchNum;
+var curLFNum;   //Current Left Fencer Number
+var curRFNum;   //Current Right Fencer Number
+
+// Global Array Vars
+var pools;
+var order;
+var fencers;
+var matches;
+
+
+//Common Functions
+
+function initOrder() 
+{
+ 
+}
+
+
+function initFencers() 
+{
+ 
+}
+
+
+function initBoutNum() 
+{
+ var fencerNum = parseInt(document.getElementById("cmboNum").value);
+ boutNum = ((Math.pow(fencerNum,2)-fencerNum)/2);
+}
+
+
+function getBoutNum() 
+{
+ var fencerNum = parseInt(document.getElementById("cmboNum").value);
+ return ((Math.pow(fencerNum,2)-fencerNum)/2);
+}
+
+
+function getFencer(MatchNum, Position) 
+{
+ var fencerNum = getFencerNum(MatchNum, Position);
+ return document.getElementById("nm"+fencerNum).innerHTML;
+}
+
+
+function getFencerNum(MatchNum, Position) 
+{
+ 
+ switch(document.getElementById("cmboNum").value)
+ {
+ case "3":
+  order = [[1,2],[2,3],[1,3]];
+  break;
+ case "4":
+  order = [[1,4],[2,3],[1,3],[2,4],[3,4],[1,2]];
+  break;
+ case "5":
+  order = [[1,2],[3,4],[5,1],[2,3],[5,4],[1,3],[2,5],[4,1],[3,5],[4,2]];
+  break;
+ case "6":
+  order = [[1,2],[4,5],[2,3],[5,6],[3,1],[6,4],[2,5],[1,4],[5,3],[1,6],[4,2],[3,6],[5,1],[3,4],[6,2]];
+  break;
+ case "7":
+  order = [[1,4],[2,5],[3,6],[7,1],[5,4],[2,3],[6,7],[5,1],[4,3],[6,2],[5,7],[3,1],[4,6],[7,2],[3,5][1,6],[2,4],[7,3],[6,5],[1,2],[4,7]];
+  break;
+ case "8":
+  order = [[2,3],[1,5],[7,4],[6,8],[1,2],[3,4],[5,6],[8,7],[4,1],[5,2],[8,3],[6,7],[4,2],[8,1],[7,5],[3,6],[2,8],[5,4],[6,1],[3,7],[4,8],[2,6],[3,5],[1,7],[4,6],[8,5],[7,2],[1,3]];
+  break;
+ /* case "9":
+  order = [[,],[,],[,],[,],[,]];
+  break;
+ case "10":
+  order = [[,],[,],[,],[,],[,]];
+  break;
+ case "11":
+  order = [[,],[,],[,],[,],[,]];
+  break;
+ case "12":
+  order = [[,],[,],[,],[,],[,]];
+  break; */
+ }
+ if (Position == "L")
+ {
+  return order[(MatchNum-1)][0];
+ } else if (Position == "R")
+ {
+  return order[(MatchNum-1)][1];
+ }
+ return "";
+}
+
+
+function updatePoolTotals() 
+{
+ var seats = parseInt(document.getElementById("cmboNum").value);
+ var totals = new Array(seats);
+ var vic = 0;
+ var ts = 0;
+ var tr = 0;
+ var ind = 0;
+ for (var r = 1; r <= seats; r++)
+ {
+  vic = 0;
+  ts = 0;
+  tr = 0;
+  ind = 0;
+  for (var c = 1; c <= seats; c++)
+  {
+   if (r != c)
+   {
+    ts += parseInt(document.getElementById("c"+c+"r"+r).innerHTML);
+    tr += parseInt(document.getElementById("c"+r+"r"+c).innerHTML);
+    if (parseInt(document.getElementById("c"+c+"r"+r).innerHTML) > parseInt(document.getElementById("c"+r+"r"+c).innerHTML))
+    {
+     vic++;
+    }
+   }
+  }
+  ind = (ts - tr);
+  totals[(r-1)] = new Array(6);
+  totals[(r-1)][0] = vic;
+  totals[(r-1)][1] = ts;
+  totals[(r-1)][2] = (-1*tr);
+  totals[(r-1)][3] = ind;
+  totals[(r-1)][4] = r;
+ }
+ totals.sort(function(a, b){
+  for (var i = 0;i < a.length;i++)
+  {
+   if (b[i] > a[i])
+    return 1;
+   else if (b[i] < a[i])
+    return -1;
+  }
+  return 0;
+ });
+ //totals.reverse();
+ totals[0][5] = 1;
+ for (var i = 1; i < totals.length;i++)
+ {
+  if ((totals[i][0] == totals[(i-1)][0]) && (totals[i][1] == totals[(i-1)][1]) && (totals[i][2] == totals[(i-1)][2]) && (totals[i][3] == totals[(i-1)][3]))
+  {
+   totals[i][5] = totals[(i-1)][5];
+  } else
+  {
+   totals[i][5] = (totals[(i-1)][5]+1);
+  }
+ }
+ for (var i = 0; i < totals.length;i++)
+ {
+  document.getElementById(totals[i][4]+"VIC").innerHTML = totals[i][0];
+  document.getElementById(totals[i][4]+"TS").innerHTML = totals[i][1];
+  document.getElementById(totals[i][4]+"TR").innerHTML = (-1*totals[i][2]);
+  document.getElementById(totals[i][4]+"IND").innerHTML = totals[i][3];
+  document.getElementById(totals[i][4]+"PLACE").innerHTML = totals[i][5];
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function submitPoolSettings() 
+{
+ // INIT pools and order
+ initBoutNum();
+ var fencerNum = parseInt(document.getElementById("cmboNum").value);
+ if (fencerNum)
+ {
+  document.getElementById("frmNum").style.display = "none";  //Remove Form
+  document.getElementById("frmFencers").style.display = "inline"; //Remove Form
+  var x;
+  var y;
+  for (var f = fencerNum;f > 3;f--)
+  {
+   x = document.getElementsByClassName("row"+f);
+   for (var i = 0; i < x.length; i++) 
+   {
+    x[i].style.display = "table-row";
+   }
+   y = document.getElementsByClassName("col"+f);
+   for (var i = 0; i < y.length; i++) 
+   {
+    y[i].style.display = "table-cell";
+   }
+   document.getElementById("n"+f).style.display = "inline";
+  }
+  document.getElementById("numBtn").style.display = "none";
+  document.getElementById("submit").style.display = "inline";
+ }
+}
+
+
+function submitNames() 
+{
+ // INIT fencers and matches
+ document.getElementById("submit").style.display = "none";
+ document.getElementById("frmFencers").style.display = "none";
+ document.getElementById("MatchPoolInfo").style.display = "block";
+ var names = document.getElementById("frmFencers");
+ for (var i = 1; i <= document.getElementById("cmboNum").value; i++)
+ {
+  document.getElementById("nm"+i).innerHTML = names.elements[(i-1)].value;
+ }
+ navMatch("GOTO", 1);
+}
+
+
+function navMatch(nav, num) 
+{
+ if ((nav == "NEXT") || (nav == "PREV") || (nav == "GOTO" && (parseInt(num, 10) > 0) && (parseInt(num, 10) <= (getBoutNum()))))
+ {
+  if (nav == "NEXT")
+  {
+   curMatchNum++;
+   if (curMatchNum > (getBoutNum()))
+   {
+    curMatchNum = 1;
+   }
+  } else if (nav == "PREV")
+  {
+   curMatchNum--;
+   if (curMatchNum == (0))
+   {
+    curMatchNum = (getBoutNum());
+   }
+  } else if (nav == "GOTO")
+  {
+   curMatchNum = parseInt(num, 10);
+  }
+  document.getElementById("curMatchNum").innerHTML = curMatchNum;
+  document.getElementById("matchNavCurNumDis").innerHTML = curMatchNum;
+  document.getElementById("curFencerLName").innerHTML = getFencer(curMatchNum, "L");
+  document.getElementById("curFencerRName").innerHTML = getFencer(curMatchNum, "R");
+  document.getElementById("curFencerLNum").innerHTML = getFencerNum(curMatchNum, "L");
+  document.getElementById("curFencerRNum").innerHTML = getFencerNum(curMatchNum, "R");
+  var matchTL = parseInt(document.getElementById("c"+getFencerNum(curMatchNum, "R")+"r"+getFencerNum(curMatchNum, "L")).innerHTML);
+  var matchTR = parseInt(document.getElementById("c"+getFencerNum(curMatchNum, "L")+"r"+getFencerNum(curMatchNum, "R")).innerHTML);
+  document.getElementById("curFencerLScore").innerHTML = matchTL;
+  document.getElementById("curFencerRScore").innerHTML = matchTR;
+  var matchNum = curMatchNum;
+  if (matchNum == (getBoutNum()))
+  {
+   matchNum = 1;
+  } else
+  {
+   matchNum++;
+  }
+  document.getElementById("next1FencerLName").innerHTML = getFencer(matchNum, "L");
+  document.getElementById("next1FencerRName").innerHTML = getFencer(matchNum, "R");
+  if (matchNum == (getBoutNum()))
+  {
+   matchNum = 1;
+  } else
+  {
+   matchNum++;
+  }
+  document.getElementById("next2FencerLName").innerHTML = getFencer(matchNum, "L");
+  document.getElementById("next2FencerRName").innerHTML = getFencer(matchNum, "R");
+  document.getElementById("MatchPoolInfo").style.display = "block";
+ }
+}
+
+
+function goToMatch() 
+{
+ navMatch("GOTO", document.getElementById("matchNavGTMNumTxt").value);
+ document.getElementById("matchNavGTMNumTxt").value = "";
+}
+ 
+
+function addPointL()
+{
+ var poolId = "c"+getFencerNum(curMatchNum, "R")+"r"+getFencerNum(curMatchNum, "L");
+ var score = parseInt(document.getElementById("curFencerLScore").innerHTML);
+ document.getElementById("curFencerLScore").innerHTML = 1+score;
+ document.getElementById(poolId).innerHTML = 1+score;
+ updatePoolTotals();
+}
+
+
+function addPointR()
+{
+ var poolId = "c"+getFencerNum(curMatchNum, "L")+"r"+getFencerNum(curMatchNum, "R");
+ var score = parseInt(document.getElementById("curFencerRScore").innerHTML);
+ document.getElementById("curFencerRScore").innerHTML = 1+score;
+ document.getElementById(poolId).innerHTML = 1+score;
+ updatePoolTotals();
+}
+
+function subPointL()
+{
+ var poolId = "c"+getFencerNum(curMatchNum, "R")+"r"+getFencerNum(curMatchNum, "L");
+ document.getElementById("curFencerLScore").innerHTML -= 1;
+ document.getElementById(poolId).innerHTML -= 1;
+ updatePoolTotals();
+}
+
+
+function subPointR()
+{
+ var poolId = "c"+getFencerNum(curMatchNum, "L")+"r"+getFencerNum(curMatchNum, "R");
+ document.getElementById("curFencerRScore").innerHTML -= 1;
+ document.getElementById(poolId).innerHTML -= 1;
+ updatePoolTotals();
+}
+
+
+function resetPage() 
+{
+ document.getElementById("n4").style.display = "none";
+ document.getElementById("n5").style.display = "none";
+ document.getElementById("n6").style.display = "none";
+ document.getElementById("n7").style.display = "none";
+ document.getElementById("n8").style.display = "none";
+ document.getElementById("frmNum").style.display = "inline";   //Remove Form
+ document.getElementById("frmFencers").style.display = "none";  //Remove Form
+ document.getElementById("numBtn").style.display = "inline";
+ document.getElementById("submit").style.display = "none";
+}
+
+
+
+
+</script>
